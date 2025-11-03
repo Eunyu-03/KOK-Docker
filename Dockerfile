@@ -36,7 +36,7 @@ ARG NAVER_CLIENT_SECRET
 ENV NAVER_CLIENT_SECRET=${NAVER_CLIENT_SECRET}
 
 # 작업 디렉토리 설정
-WORKDIR /app
+WORKDIR /kok-docker
 
 # Gradle wrapper 및 프로젝트 파일 복사
 # COPY <src> <dest>
@@ -54,10 +54,10 @@ FROM eclipse-temurin:17-jre
 ENV TZ=Asia/Seoul
 
 # JAR 복사 (위 단계에서 생성된 JAR)
-COPY --from=build /KOK-Docker/build/libs/KOK-Docker-0.0.1-SNAPSHOT.jar KOK-Docker.jar
+COPY --from=build /kok-docker/build/libs/kok-docker-0.0.1-SNAPSHOT.jar kok-docker.jar
 
 # 포트 오픈 (Spring Boot 기본 포트)
 EXPOSE 10000
 
 # 실행 명령
-ENTRYPOINT ["java", "-jar", "KOK-Docker.jar"]
+ENTRYPOINT ["java", "-jar", "kok-docker.jar"]
