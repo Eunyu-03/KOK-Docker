@@ -67,7 +67,6 @@ jobs:
             kok
             
     - name: Clean up not used images
-      if: success()
       run: |
         ssh -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST}} << 'EOF'
           docker image prune -f
